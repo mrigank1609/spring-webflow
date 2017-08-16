@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="mail" class="com.demo.spring.Mail" autowire="byType">
+		<property name="fromAddress" value="trainer" />
+		<property name="toAddress" value="all" />
+		<property name="message">
+			<bean class="com.demo.spring.Message">
+				<property name="header" value="Lunch Break" />
+				<property name="body" value="No 
+		Lunch Today!!" />
+			</bean>
+		</property>
+	</bean>
+	<!-- <bean id="msg" class="com.demo.spring.Message"> <property name="header" 
+		value="Lunch Break" /> <property name="body" value="No Lunch Today!!" /> 
+		</bean> -->
+	<!-- <bean id="msg" class="com.demo.spring.Message"> <constructor-arg value="Lunch 
+		Break" /> <constructor-arg value="Lunch will be at 1:00 pm" /> </bean> -->
+	<util:list id="addrList" list-class="java.util.ArrayList"
+		value-type="java.lang.String">
+		<value>me</value>
+		<value>one</value>
+		<value>two</value>
+		<value>three</value>
+	</util:list>
+
+	<!-- <bean id="mail" class="com.demo.spring.Mail" p:fromAddress="me" p:message-ref="message" 
+		p:toAddress-ref="addrList" /> <bean id="message" class="com.demo.spring.Message" 
+		p:header="Tea Break" p:body="Tea at 4:00pm" /> -->
+</beans>
