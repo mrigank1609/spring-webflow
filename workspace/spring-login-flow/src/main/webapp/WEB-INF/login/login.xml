@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	<persistence-context />
+	<view-state id="start" view="login" model="user">
+		<transition on="proceed" to="check" />
+	</view-state>
+
+	<!-- <decision-state id="check"> <if test="user.userName.equals(user.password)" 
+		then="success" else="failure" /> </decision-state> -->
+	<action-state id="check">
+		<evaluate expression="authenticator.checkUser(user.userName,user.password)" />
+		<transition on="valid" to="success" />
+		<transition on="invalid" to="failure" />
+	</action-state>
+	<view-state id="success" view="loginSuccess">
+		<on-render>
+			<set name="viewScope.user" value="user.userName" />
+		</on-render>
+	</view-state>
+	<view-state id="failure" view="loginFailure" />
+
+	<end-state id="cc" />
+</flow>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form modelAttribute="userModel" method="POST">
+	<form:form modelAttribute="user" method="POST" action="${flowExecutionURL}">
 		<table>
 			<tr>
 				<td>User Name:</td>
@@ -21,7 +21,7 @@
 				<td><form:errors path="password" /></td>
 			</tr>
 			<tr>
-				<td colspan="3"><input type="submit" value="Login"></td>
+				<td colspan="3"><input type="submit" value="proceed" name="_eventId_proceed" ></td>
 			</tr>
 		</table>
 	</form:form>
