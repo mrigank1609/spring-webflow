@@ -1,0 +1,9 @@
+server:
+  context-path: /spring-mvc2
+spring:
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /jsp/
+      
+
